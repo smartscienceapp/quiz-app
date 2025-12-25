@@ -33,7 +33,7 @@ export default function Dashboard() {
 
         try {
             await axios.post(
-                "https://quiz-app-backend-mu.vercel.app/questions",
+                "https://smartscience-backend-quiz.hf.space/questions",
                 {
                     text: questionText,
                     options: [option1, option2, option3],

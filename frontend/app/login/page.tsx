@@ -20,7 +20,7 @@ export default function LoginPage() {
         formData.append("password", password);
 
         try {
-            const response = await axios.post("https://quiz-app-backend-mu.vercel.app/token", formData);
+            const response = await axios.post("https://smartscience-backend-quiz.hf.space/token", formData);
             const token = response.data.access_token;
             // 1. Save Token
             localStorage.setItem("token", token);

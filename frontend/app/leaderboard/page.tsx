@@ -9,7 +9,7 @@ export default function LeaderboardPage() {
 
     useEffect(() => {
         // Anyone can view the leaderboard (no token needed, optional)
-        axios.get("https://quiz-app-backend-mu.vercel.app/leaderboard")
+        axios.get("https://smartscience-backend-quiz.hf.space/leaderboard")
             .then(res => setScores(res.data))
             .catch(err => console.error(err));
     }, []);

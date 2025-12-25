@@ -14,7 +14,7 @@ export default function ExamPage() {
         if (!token) router.push("/login");
 
         // Fetch questions (Answers are hidden by backend!)
-        axios.get("https://quiz-app-backend-mu.vercel.app/questions")
+        axios.get("https://smartscience-backend-quiz.hf.space/questions")
             .then(res => setQuestions(res.data))
             .catch(err => console.error(err));
     }, []);
@@ -27,7 +27,7 @@ export default function ExamPage() {
         const token = localStorage.getItem("token");
         try {
             const res = await axios.post(
-                "https://quiz-app-backend-mu.vercel.app/submit",
+                "https://smartscience-backend-quiz.hf.space/submit",
                 { answers: answers },
                 { headers: { Authorization: `Bearer ${token}` } }
             );

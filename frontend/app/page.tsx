@@ -8,7 +8,7 @@ export default function Home() {
   // This runs when the page loads
   useEffect(() => {
     // 1. Call the Python API
-    axios.get('https://quiz-app-backend-mu.vercel.app')
+    axios.get('https://smartscience-backend-quiz.hf.space')
       .then((response) => {
         // 2. If successful, show the message from Python
         setMessage(response.data.message);
