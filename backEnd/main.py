@@ -82,11 +82,12 @@ def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
 
-# --- ROUTES ---
-
+# --- ROUTES --- 
 @app.get("/")
 def read_root(): 
-    return {"message": "Quiz App is Live - Connection Successful!"}
+    return {
+        "message": "✅ Quiz backend server is running! Version: 1.0"
+    }
 
 @app.post("/signup")
 def signup(user: UserCreate, db: Session = Depends(get_db)):
