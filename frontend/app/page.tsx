@@ -8,7 +8,7 @@ export default function Home() {
   // This runs when the page loads
   useEffect(() => {
     // 1. Call the Python API
-    axios.get('http://127.0.0.1:8000/')
+    axios.get('https://quiz-app-backend-mu.vercel.app')
       .then((response) => {
         // 2. If successful, show the message from Python
         setMessage(response.data.message);

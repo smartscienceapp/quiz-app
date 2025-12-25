@@ -33,7 +33,7 @@ export default function Dashboard() {
 
         try {
             await axios.post(
-                "http://127.0.0.1:8000/questions",
+                "https://quiz-app-backend-mu.vercel.app/questions",
                 {
                     text: questionText,
                     options: [option1, option2, option3],

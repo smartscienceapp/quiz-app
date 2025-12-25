@@ -9,7 +9,7 @@ export default function LeaderboardPage() {
 
     useEffect(() => {
         // Anyone can view the leaderboard (no token needed, optional)
-        axios.get("http://127.0.0.1:8000/leaderboard")
+        axios.get("https://quiz-app-backend-mu.vercel.app/leaderboard")
             .then(res => setScores(res.data))
             .catch(err => console.error(err));
     }, []);
