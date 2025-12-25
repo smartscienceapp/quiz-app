@@ -85,9 +85,7 @@ def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
 # --- ROUTES --- 
 @app.get("/")
 def read_root(): 
-    return {
-        "message": "✅ Quiz backend server is running! Version: 1.0"
-    }
+    return {"message": "✅ Quiz App is Live!"}
 
 @app.post("/signup")
 def signup(user: UserCreate, db: Session = Depends(get_db)):
