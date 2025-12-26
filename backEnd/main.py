@@ -198,3 +198,32 @@ def get_leaderboard(db: Session = Depends(get_db)):
         .limit(10)\
         .all()
     return top_scores
+
+# --- ADMIN ONLY ENDPOINT ---
+@app.post("/admin/create-user")
+def admin_create_user(
+    new_user: UserCreate, 
+    current_user: models.User = Depends(get_current_user), 
+    db: Session = Depends(get_db)
+):
+    # 1. Cek apakah yang request adalah Admin
+    if current_user.role != "admin":
+        raise HTTPException(status_code=403, detail="Hanya Admin yang boleh akses ini!")
+
+    # 2. Cek apakah username sudah ada
+    existing_user = db.query(models.User).filter(models.User.username == new_user.username).first()
+    if existing_user:
+        raise HTTPException(status_code=400, detail="Username sudah dipakai")
+
+    # 3. Hash password dan simpan 
+    hashed_pw = pwd_context.hash(new_user.password)
+    hashed_password = hashed_pw
+    db_user = models.User(
+        username=new_user.username, 
+        role=new_user.role,  # Admin bisa pilih role (student/teacher)
+        hashed_password=hashed_password
+    )
+    db.add(db_user)
+    db.commit()
+    db.refresh(db_user)
+    return {"message": f"User {new_user.username} dengan role {new_user.role} berhasil dibuat!"}
